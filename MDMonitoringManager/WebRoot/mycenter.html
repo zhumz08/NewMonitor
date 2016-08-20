@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=5; IE=10">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<title>监控系统</title>
+	<link rel="stylesheet" href="css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="css/index.css"/>
+	<link rel="stylesheet" type="text/css" href="css/style.css"/>
+	<link rel="stylesheet" href="css/jqueryUI/jquery-ui.min.css" />
+	<script src="./js/jquery-1.9.1.min.js" type="text/javascript"></script>
+	<script type="text/javascript" src="./js/jquery-ui.min.js" ></script>
+	<script src="./js/drag.js" type="text/javascript"></script>
+	<script src="./js/style.js" type="text/javascript"></script>
+  <style>
+	  #dialog label, #dialog input { display:block; }
+	  #dialog label { margin-top: 0.5em; }
+	  #dialog input, #dialog textarea { width: 95%; }
+	  
+	  
+	  #tabs ul li {white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
+	  #tabs li .ui-icon-close { float: left; margin: 0.8em 0.2em 0 0; cursor: pointer; }
+	  #add_tab { cursor: pointer; }
+	  .ui-widget-content {border: none;}
+	  .ui-corner-all {border-bottom-left-radius: 0;border-bottom-right-radius: 0;border-bottom: none;}
+	  
+	 .ui-tabs .ui-tabs-nav li.ui-tabs-active {padding-bottom: 5px;}
+	 .ui-tabs .ui-tabs-nav li {transition: all 0.6s;padding-top: 5px;padding-bottom: 5px;}
+	 .ui-tabs-anchor {font-size: 16px;}
+	 .ui-tabs .ui-tabs-panel {padding: 0;}
+  </style>
+  <script>
+  
+    $(function() {
+    	$("#tabs").tabs({active: 1});
+	    var tabs = $( "#tabs" ).tabs();
+	    tabs.bind( "keyup", function( event ) {
+	      if ( event.altKey && event.keyCode === $.ui.keyCode.BACKSPACE ) {
+	        var panelId = tabs.find( ".ui-tabs-active").remove().attr( "aria-controls" );
+	        $( "#" + panelId ).remove();
+	        tabs.tabs( "refresh" );
+	      }
+	    });
+  });
+  </script>
+</head>
+<body>
+	<div class="nav">
+		<img src="images/bocom_logo.png" style="float: left;padding-left: 150px;margin-top: 20px;" />
+		<h1>平安包头视频综合管理应用平台
+			<input type="search" name="search">
+			<div id="loginMenu">
+				<a href="javascript:void(0);">
+					<span>
+						<img src="images/icon/message.png" />
+					</span>
+				</a>
+				<a href="javascript:void(0);">
+					<span>
+						<img src="images/icon/warn.png" />
+					</span>
+				</a>
+				<a href="javascript:void(0);">
+					<span>
+						<img src="images/icon/question.png" />
+					</span>
+				</a>
+				<a href="javascript:void(0);">
+					<span>
+						<img src="images/icon/setup.png" />
+					</span>
+				</a>
+				<a href="javascript:void(0);">
+					<span>
+						<img src="images/icon/exit.png" />
+					</span>
+				</a>
+			</div>
+		</h1>
+	</div>
+	
+	
+	<div id="tabs" style="height: 89%;">
+	  <ul>
+	    <li style="padding-left: 30px;padding-right: 30px;"><a href="#tabs-1">我的中心</a></li>
+	    <li style="padding-left: 30px;padding-right: 30px;"><a href="#tabs-2">应用中心</a></li>
+	     <li style="padding-left: 30px;padding-right: 30px;"><a href="#tabs-1">我的中心</a></li>
+	    <li style="padding-left: 30px;padding-right: 30px;"><a href="#tabs-2">应用中心</a></li>
+	     <li style="padding-left: 30px;padding-right: 30px;"><a href="#tabs-1">我的中心</a></li>
+	    <li style="padding-left: 30px;padding-right: 30px;"><a href="#tabs-2">应用中心</a></li>
+	     <li style="padding-left: 30px;padding-right: 30px;"><a href="#tabs-1">我的中心</a></li>
+	    <li style="padding-left: 30px;padding-right: 30px;"><a href="#tabs-2">应用中心</a></li>
+	  </ul>
+	  <div id="tabs-1">
+	  	
+	  </div>
+	  <div id="tabs-2">
+	  	<iframe src="personal.html" id="personal" width="100%" border="0" scrolling="no" height="815";></iframe>
+	  	
+	  </div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<link type="text/css" href="./js/codebase/dhtmlxtree.css" rel="stylesheet" />
+	<script src="./js/jquery-1.9.1.min.js" type="text/javascript"></script>
+	<script src="./js/drag.js" type="text/javascript"></script>
+	<script src="./js/codebase/dhtmlxcommon.js" type="text/javascript"></script>
+	<script src="./js/codebase/dhtmlxtree.js" type="text/javascript"></script>
+	<script src="./js/jquery.ui.myDialog.min.js" type="text/javascript"></script>
+	<script src="./js/Log.js" type="text/javascript"></script>
+	<script src="./js/index.js" type="text/javascript"></script>
+	<script type="text/javascript" FOR="commonOcx" EVENT="OnSDKMessage(lMsgType, strContent)" >
+		OnSDKMessageEvent(lMsgType, strContent);
+ 	</script>
+	<script src="./js/left.js" type="text/javascript"></script>
+	
+	<script src="./js/live.js" type="text/javascript"></script>
+	<script src="./js/history.js" type="text/javascript"></script>
+	<script src="./js/config.js" type="text/javascript"></script>
+	
+	
+	
+	
+	<title>视频直播</title>
+	<!-- <script type="text/javascript">
+		$(function() {
+			login();
+			$('.select > p').on('click', function(e) {
+				$('.select').toggleClass('open');
+				e.stopPropagation();//阻止冒泡
+			});
+			$('.select ul li').on('click', function(e) {
+				var _this = $(this);
+				$('.select > p').text(_this.attr('data-value'));
+				_this.addClass('selected').siblings().removeClass('selected');
+				$('.select').removeClass('open');
+				e.stopPropagation();
+			});
+			$(document).on('click', function() {
+				$('.select').removeClass('open');
+			});
+			
+			//路口示意图
+			var liValueArr = $(".select ul").find("li");
+			$.each(liValueArr,function(i, item) {
+				var camera = liValueArr[i].getAttribute("data-value");
+				$("#crossing").append("<a href='javascript:void(0);'><img src='images/icon/camera.png' title='"+camera+"'></a>");
+			});
+			//相机拖动
+			$("#crossing a").each(function() {
+				$(this).dragging({
+					move : 'both',
+					randomPosition : true
+				});
+			});
+		});
+	</script> -->
+	</head>
+<body>
+
+	
+	<div style="width:0px;height:0px"> 
+	  <!-- 通信控件-->
+	  <OBJECT id="commonOcx" classid="CLSID:55DCC094-72F7-43F8-89BA-95369D175ED9"  width="0px " height="0px" onerror="ocxOnloadErr()">
+	  </OBJECT>
+	</div>
+	
+	<!-- 登陆框 -->
+<div id="logindiv" style="display:none">
+  <form id="loginForm">
+  <div class="div_error">
+    <span id="loginlogspan"  class="error" style="display:none">连接服务器失败！请检查服务器地址和端口.</span>
+  </div>
+    <p>
+      <label for="ip">IP地址：</label>
+      <input type="text" name="ip" id="ip" class="default_text text" value="15.32.12.224" />
+    </p>
+    <p>
+      <label for="port">端口号：</label>
+      <input type="text" name="port" id="port" class="short_text text" value="4510" />
+    </p>
+    <p>
+      <label for="username">用户名：</label>
+      <input type="text" name="username" id="username" class="default_text text" value="1" />
+    </p>
+    <p>
+      <label for="password">密&nbsp;&nbsp;码：</label>
+      <input type="password" name="password" id="password" class="default_text text" value="0" />
+    </p>
+    <p class="p_bt">
+      <input type="button" class="sb_bt " value=" 登&nbsp;&nbsp;录 " />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="reset" class="sb_bt" value="重&nbsp;&nbsp;置" />
+    </p>
+  </form>
+</div>
+	 <div id="content-left">
+    <div class="dh-bar"><span class="icons-left-bg">&nbsp;</span>导航栏</div>
+    <div id="turnE">
+      <div class="menuA">
+        <ul>
+          <li class="libg" id="shexiangjili">摄像机</li>
+          <li id="jiansuoLi">检索</li>
+          <li class="">浏览</li>
+        </ul>
+      </div>
+      <div class="menuA_content">
+        <div class="show turn" style="display: block;"> 
+          实时摄像机树列表
+          <div id="cameraLiveTreeDiv" style="height: 100%; width: 100%; overflow: auto;" > </div>
+        </div>
+        <div class="hidden turn" style="display: none;"> 
+          摄像机列表（视频列表用）
+          <div id="cameraHisTreeDiv"  style="height: 100%; width: 100%; overflow: auto;" ></div>
+        </div>
+      </div>
+     </div>
+        <hr width="98%"/>
+       
+       <div class="operate" id="videoListDiv">
+       		视频树列表
+       		<div id="VideoTreeDiv" style="height: 100%; width: 100%; overflow: auto;"></div>
+       </div>
+      </div>
+
+
+	<div id="contentLeft">
+		<div class="content">
+			<div class="select">
+				<p>所有选项</p>
+				<ul>
+					<li data-value="一次元相机">一次元相机</li>
+					<li data-value="二次元相机">二次元相机</li>
+					<li data-value="三次元相机">三次元相机</li>
+					<li data-value="四次元相机">四次元相机</li>
+					<li data-value="五次元相机">五次元相机</li>
+					<li data-value="六次元相机">六次元相机</li>
+					<li data-value="七次元相机">七次元相机</li>
+					<li data-value="八次元相机">八次元相机</li>
+					<li data-value="九次元相机">九次元相机</li>
+					<li data-value="十次元相机">十次元相机</li>
+				</ul>
+			</div>
+		</div>
+		 <div id="content-right">
+        <div class="menuA">
+          <ul>
+            <li class="libg" id="sshfli">实时回放</li>
+            <li class="" id="sphfli">视频回放</li>
+      </ul>
+    </div>
+    <div class="menuA_content">
+      <div class="show turn" id="playdivs" style="display: block; opacity: 1; "> 
+		<div>
+	        <!--实时播放区域开始 object id="realPlay1"-->
+	        <div id="show1" class="show_h" style="display: block; opacity: 1; ">
+	          <object id="realPlay1"
+						classid="CLSID:25CDEFD7-E75F-44F0-8E91-AA94FC5B9B61" width="100%" height="100%">
+	            <embed width="100%" height="100%" src="" type="application/http-index-format"/>
+	          </object>
+	        </div>
+	        <div id="show2"  class="show_h" style="display:none;" >
+	          <object id="realPlay2"
+						classid="CLSID:25CDEFD7-E75F-44F0-8E91-AA94FC5B9B61"  width="100%" height="100%">
+	          </object>
+	        </div>
+	        <div id="show3"  class="show_h" style="display:none;" >
+	          <object id="realPlay3"
+						classid="CLSID:25CDEFD7-E75F-44F0-8E91-AA94FC5B9B61"  width="100%" height="100%">
+	          </object>
+	        </div>
+	        <div id="show4"  class="show_h" style="display:none;" >
+	          <object id=realPlay4
+						classid="CLSID:25CDEFD7-E75F-44F0-8E91-AA94FC5B9B61" width="100%" height="100%" >
+	          </object>
+	        </div>
+	        <div id="show5"  class="show_h" style="display:none;" >
+	          <object id=realPlay5
+						classid="CLSID:25CDEFD7-E75F-44F0-8E91-AA94FC5B9B61" width="100%" height="100%" >
+	          </object>
+	        </div>
+	        <div id="show6"  class="show_h" style="display:none;" >
+	          <object id=realPlay6
+						classid="CLSID:25CDEFD7-E75F-44F0-8E91-AA94FC5B9B61" width="100%" height="100%" >
+	          </object>
+	        </div>
+	        <div id="show7"  class="show_h" style="display:none;" >
+	          <object id="realPlay7"
+						classid="CLSID:25CDEFD7-E75F-44F0-8E91-AA94FC5B9B61" width="100%" height="100%" >
+	          </object>
+	        </div>
+	        <div id="show8"  class="show_h" style="display:none;" >
+	          <object id="realPlay8"
+						classid="CLSID:25CDEFD7-E75F-44F0-8E91-AA94FC5B9B61" width="100%" height="100%" >
+	          </object>
+	        </div>
+	        <div id="show9"  class="show_h" style="display:none;" >
+	          <object id="realPlay9"
+						classid="CLSID:25CDEFD7-E75F-44F0-8E91-AA94FC5B9B61" width="100%" height="100%" >
+	          </object>
+	        </div>
+	        <div id="show10"  class="show_h" style="display:none;" >
+	          <object id="realPlay10"
+						classid="CLSID:25CDEFD7-E75F-44F0-8E91-AA94FC5B9B61" width="100%" height="100%" >
+	          </object>
+	        </div>
+	        <div id="show11"  class="show_h" style="display:none;" >
+	          <object id="realPlay11"
+						classid="CLSID:25CDEFD7-E75F-44F0-8E91-AA94FC5B9B61" width="100%" height="100%" >
+	          </object>
+	        </div>
+	        <div id="show12"  class="show_h" style="display:none;" >
+	          <object id="realPlay12"
+						classid="CLSID:25CDEFD7-E75F-44F0-8E91-AA94FC5B9B61"  width="100%" height="100%">
+	          </object>
+	        </div>
+	        <div id="show13"  class="show_h" style="display:none;" >
+	          <object id="realPlay13"
+						classid="CLSID:25CDEFD7-E75F-44F0-8E91-AA94FC5B9B61" width="100%" height="100%" >
+	          </object>
+	        </div>
+	        <div id="show14"  class="show_h" style="display:none;" >
+	          <object id="realPlay14"
+						classid="CLSID:25CDEFD7-E75F-44F0-8E91-AA94FC5B9B61" width="100%" height="100%" >
+	          </object>
+	        </div>
+	        <div id="show15" class="show_h" style="display:none;"  >
+	          <object id="realPlay15"
+						classid="CLSID:25CDEFD7-E75F-44F0-8E91-AA94FC5B9B61"  width="100%" height="100%">
+	          </object>
+	        </div>
+	        <div id="show16"  class="show_h" style="display:none;" >
+	          <object id="realPlay16"
+						classid="CLSID:25CDEFD7-E75F-44F0-8E91-AA94FC5B9B61" width="100%" height="100%" >
+	          </object>
+	        </div>
+       	</div>
+       	<!-- 实时播放区域功能菜单 -->
+        <div id="play-about" style="float:left"> 
+			<a title="首窗口单屏" onClick="showLayout(1)" class="icons-right-bg play play-1"></a> 
+			<a title="4分屏" onClick="showLayout(4)" class="icons-right-bg play play-2"></a> 
+			<a title="6分屏" onClick="showLayout(6)" class="icons-right-bg play play-3"></a>
+			<a title="播放-8屏" onClick="showLayout(8)" class="icons-right-bg play play-4"></a>
+			<a title="9分屏" onClick="showLayout(9)" class="icons-right-bg play play-5"></a>
+			<!--<a title="播放-13屏" class="icons-right-bg play play-6"></a>-->
+			<a title="16分屏" onClick="showLayout(16)" class="icons-right-bg play play-7"></a>
+			<a title="当前窗口单屏" id="zoominA" class="icons-right-bg play play-8"></a>
+			<a title="全屏" id="fullDocumentA"  class="icons-right-bg play play-9"></a>
+			<a title="满屏" id="fullScreemA" class="icons-right-bg play play-10"></a> 
+	        <!-- <a title="播放-屏幕调节" class="icons-right-bg play play-11"></a> --> 
+	        <a title="本地录像" id="localVideoA" name="start" class="icons-right-bg play play-12"></a> 
+			<a title="停止直播" id="stopLiveA" class="icons-right-bg play play-13"></a>
+			<a title="服务器录像" id="hisVideoA"  name="start" class="icons-right-bg play play-14"></a>
+			<!--<a title="停止服务器录像" id="stopliveA" class="icons-right-bg play play-15"></a>-->
+			<a title="截屏" id="savePicA" class="icons-right-bg play play-16"></a> 
+	        <!--<a title="停止巡检" class="icons-right-bg play play-17"></a> 
+			<a title="视频标签" class="icons-right-bg play play-18"></a>--> 
+		</div>
+	</div>
+         <!--历史录像播放区域-->
+         <div class="hidden turn" style="display: none;">
+         <div id="yshfDiv" class="show_h">
+		   <object id ="hisPlayObj" classid="CLSID:25CDEFD7-E75F-44F0-8E91-AA94FC5B9B61" width="100%" height="100%">		      
+		   </object>
+		 </div>
+	     <div style="width:100%; height:145px; background-color:#404040" >
+	     	<div id="playControlDiv" style="float:right">
+	     		<div style="height:20px; float:top">
+	     		</div>
+		     	<div>
+			     <object id="playControlObj" classid="CLSID:65A9069B-22FF-4403-BD81-0381E6153A80" style="background-color:#404040" width="120px" height="120x" align="middle">
+		         </object>
+		        </div>
+		    </div>
+	     	<div id = "timeLineDiv" style="width:90%; height:100%; float:left;">
+		     <object id="timeLineObj" classid="CLSID:E6D58EA6-8F73-4846-9040-B484372B42B0" width="100%" height="100%">
+		     </object>
+		   </div>
+		</div>
+      </div>
+    </div>
+  </div>
+</div>
+	<div id="contentRight">
+		<div>
+			<!-- PZT控制区域 -->
+			<div class="operate" id="ptzDiv">
+				<div class="menuA">
+					<ul>
+						<li class="libg">PZT控制</li>
+					</ul>
+				</div>
+				<div class="menuA_content">
+					<div class="show turn" style="display: block; opacity: 1;">
+						<div id="PZT-first">
+							<span class="icons-left-bg icon icon-pa icon-up2" name="3"></span><span
+								class="icons-left-bg icon icon-pa icon-down2" name="4"></span><span
+								class="icons-left-bg icon icon-pa icon-left" name="2"></span><span
+								class="icons-left-bg icon icon-pa icon-right" name="1"></span>
+							<div id="PZT-button">
+								<ul>
+									<li><a class="icons-left-bg PZT-bt" id="fd" name="9"
+										title="放大"></a></li>
+									<li><a class="icons-left-bg PZT-bt" id="jjy" name="11"
+										title="近调焦"></a></li>
+									<li><a class="icons-left-bg PZT-bt" id="gqd" name="13"
+										title="光圈大"></a></li>
+									<li><a class="icons-left-bg PZT-bt" id="ys" name="20"
+										title="雨刷"></a></li>
+									<li><a class="icons-left-bg PZT-bt" id="syzw" name="15"
+										title="设置预制位"></a></li>
+									<li><a class="icons-left-bg PZT-bt" id="sx" name="10"
+										title="缩小"></a></li>
+									<li><a class="icons-left-bg PZT-bt" id="jjj" name="12"
+										title="远调焦"></a></li>
+									<li><a class="icons-left-bg PZT-bt" id="gqx" name="14"
+										title="光圈小"></a></li>
+									<li><a class="icons-left-bg PZT-bt" id="dkg" name="17"
+										title="闪光灯"></a></li>
+									<li><a class="icons-left-bg PZT-bt" id="tyzw" name="16"
+										title="调用预制位"></a></li>
+								</ul>
+							</div>
+						</div>
+						<div id="figure">
+							<div id="figure_panel">
+								<a class="figure_a">1</a> <a class="figure_a">2</a> <a
+									class="figure_a">3</a> <a class="figure_a">4</a> <a
+									class="figure_a">5</a> <a class="figure_a">&lt;</a> <a
+									class="figure_a">6</a> <a class="figure_a">7</a> <a
+									class="figure_a">8</a> <a class="figure_a">9</a> <a
+									class="figure_a">0</a> <a class="figure_a">C</a>
+							</div>
+							<div id="figure_control">
+								<input type="text" class=" text1"
+									style="text-align:center;box-shadow: 0 0 13px gray; vertical-align:middle;height:30px;width:75px; line-height:30px; margin:0px; padding:0px;"
+									id="yuzhiwei" maxlength="5" min="1" max="1024" value="1" />
+								<div class="div_turning">
+									<a class="icons-left-bg turning pre" title="上一个" id="prevA"></a>
+									<a class="icons-left-bg turning next" title="下一个" id="nextA"></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clear"></div>
+		<!-- 路口示意图区域 -->
+		<div id="crossing" title="路况示意图">
+			<!-- <img src="images/roadmap.jpg" alt="路况示意图" title="路况示意图"/> -->
+		</div>
+	</div>
+</body>
+</html>

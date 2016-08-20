@@ -1,0 +1,103 @@
+@charset "utf-8";
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,iframe{
+	margin: 0;
+	padding: 0; 
+	outline: 0;
+	font-size: 11px;
+	font-family:"微软雅黑", "宋体";
+	border:0px;
+}
+*{
+	padding:0px;
+	margin:0px;
+}
+ol, ul {
+	list-style: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/* -----------------------------------------------------------
+	主样式
+----------------------------------------------------------- */
+/*html
+{
+	height: 100%;  
+}
+
+body
+{
+	margin: 0;
+	padding: 0;
+	background:url("") repeat;
+	background-color:#fff;
+	overflow:hidden;
+}
+*/
+/* -----------------------------------------------------------
+	图片
+----------------------------------------------------------- */ 
+
+/* == clearfix == */
+.clearfix:after { /*/*/content: "."; /* IE8 hack */ display: block; height: 0; clear: both; visibility: hidden; }
+/* IE7 hack */
+.clearfix { display: inline-block; }
+/* IE-mac, IE5, IE6 */
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+
+input,img
+{
+	border: none;	
+}
+
+/* -----------------------------------------------------------
+	锚
+----------------------------------------------------------- */ 
+
+a
+{
+	text-decoration: none;
+	cursor: pointer;
+	color:#000;
+}
+a.underline
+{
+	text-decoration: underline;
+}
+a:hover
+{
+	color:#015C93;
+	font-weight:bold;
+}
+
+a.underline_none:hover
+{
+	text-decoration: none;
+}
+/* -----------------------------------------------------------
+	列表
+----------------------------------------------------------- */ 
+ul.circle { list-style-type: circle; }
+ul.disc { list-style-type: disc; }
+ul.square { list-style-type: square; }
+ol.lower-roman { list-style-type: lower-roman; }
+ol.upper-roman { list-style-type: upper-roman; }
+ol.lower-alpha { list-style-type: lower-alpha; }
+ol.upper-alpha { list-style-type: upper-alpha; }
+ol.decimal  { list-style-type: decimal; }
+
+input[type="text"]:focus, input[type="password"]:focus, textarea:focus, select:focus {
+    border-color: #6699FF;
+    box-shadow: 0 1px 2px #6699FF inset;
+}
+

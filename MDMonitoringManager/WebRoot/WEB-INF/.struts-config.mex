@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/editConfig.do" location="50,50" dimension="297,104" />
+  <StrutsActivity path="/editConfig.jsp" location="650,50" dimension="117,53" />
+  <StrutsActivity path="editConfig.jsp" location="950,50" dimension="112,53" />
+  <StrutsActivity path="/WEB-INF/editConfig.jsp" location="50,250" dimension="174,53" />
+  <StrutsTransition id="/editConfig.do,success,/WEB-INF/editConfig.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="137,154" />
+      <AbsolutePoint location="137,250" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/editConfig.do,success,/editConfig.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="347,76" />
+      <AbsolutePoint location="650,76" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

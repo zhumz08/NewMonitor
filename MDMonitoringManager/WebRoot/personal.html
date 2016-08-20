@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=5; IE=10">
+		<title>应用中心</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/jqueryUI/jquery-ui.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+		<script src="js/jquery-1.9.1.min.js" type="text/javascript"></script>
+		<script type="text/javascript" src="./js/jquery-ui.min.js" ></script>
+		<style>
+			#tabs {height: 100%;width: 100%;}
+			.ui-tabs-vertical { width: 113em;border: none;margin-top: 30px;}
+			.ui-tabs-vertical .ui-tabs-nav { padding: 0; float: left; width: 19em;height: 800px;border-right: 3px solid gray;}
+			.ui-tabs-vertical .ui-tabs-nav li { clear: left; width: 100%; border-bottom-width: 1px !important; border-right-width: 3px !important; margin: -5px -1px .2em 0; }
+			.ui-tabs-vertical .ui-tabs-nav li a { display:block; }
+			.ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active { padding-bottom: 0; border-right-width: 1px; border-right-width: 1px; }
+			.ui-tabs-vertical .ui-tabs-panel { float: left; width: 1000px;}
+			.ui-tabs-vertical .ui-tabs-nav li {background: #fff;}
+			.ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active {transition: all 0.6s;border-right-width: 10px; background: lightgrey;border-right: 3px solid orange;}
+			.ui-widget-header {border: 0;background: #fff;}
+			.ui-tabs-anchor {font-size: 20px;}
+			.ui-tabs .ui-tabs-nav .ui-tabs-anchor {padding: .5em 3em;}
+			.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {border-top: none ;border-left: none;border-bottom: none;border-right: gray 1px solid;}
+			.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {color: #FA8440;}
+			.ui-tabs .ui-tabs-panel {padding: 20px 0 0 50px;}
+		</style>
+		<script>
+		  $(function() {
+			  $( "#tabs" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
+			  $( "#tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
+			  
+			  $(".monitor label").eq(1).bind('click',function(){
+			  	$(".monitor label").eq(0).removeClass("classify");
+			  	$(this).addClass("frequency");
+			  });
+			  $(".monitor label").eq(0).bind('click',function(){
+			  	$(".monitor label").eq(1).removeClass("frequency");
+			  	$(this).addClass("classify");
+			  });
+		  });
+		    var tabs = $( "#tabs" ).tabs();
+		    var tabTitle,tabContent,tabTemplate;
+			var parenTabs = $("#tabs",window.parent.document);
+		    function openTab(menuId,url,name){
+		    	var lis = parenTabs.find("li");
+		    	tabTitle = name;
+		    	tabContent = url;
+			    var num = -1;
+			    var count = 2;
+	      		var items=parenTabs.find("li");
+	      		$.each(items,function(index,item){
+					count = index;
+				   if($(item).attr("id")==menuId)
+					{
+						num=index;
+						return false;
+					}
+				})
+				//新添加一个标签页
+				if(num==-1){
+					//新建标签页超过8个，则关闭之前打开的
+			    	if(lis.length>9){
+			    		parenTabs.find("li").eq(2).remove();
+			    		/* parenTabs.tabs({active: num}); */
+			    	}
+				    tabTemplate = "<li style='padding-left: 15px;padding-right: 15px;'  id='"+menuId+"'><a href='"+url+"' title='"+tabTitle+"'>"+tabTitle+"</a> <span class='ui-icon ui-icon-close' role='presentation'>Remove Tab</span></li>";
+				    parenTabs.find(".ui-tabs-nav").append(tabTemplate);
+			      	parenTabs.find("li")[1].setAttribute("class","ui-state-default ui-corner-top");
+			      	parenTabs.tabs({active: count+1});
+			      	parenTabs.tabs("refresh");
+			      	parenTabs.tabs({active: count+1});
+			     }
+		        else {
+		            parenTabs.tabs({active: num});//匹配到title，就显示这个窗口
+		        }
+		    }
+		    // 关闭图标：当点击时移除标签页
+		    parenTabs.delegate( "span.ui-icon-close", "click", function() {
+		    	var panelId = $( this ).closest( "li" ).remove().attr( "aria-controls");
+		    	$( "#" + panelId ).remove();
+		    	parenTabs.tabs( "refresh" );
+		    });
+		    parenTabs.bind( "keyup", function( event ) {
+		      if ( event.altKey && event.keyCode === $.ui.keyCode.BACKSPACE ) {
+		        var panelId = tabs.find( ".ui-tabs-active" ).remove().attr( "aria-controls" );
+			        $( "#" + panelId ).remove();
+			        parenTabs.tabs( "refresh" );
+		    	}
+		    });
+	    </script>
+	</head>
+	<body>
+		<div id="tabs">
+		  <ul>
+		    <li><a href="#tabs-1">我的应用</a></li>
+		    <li><a href="#tabs-2">全部应用</a></li>
+		    <li><a href="#tabs-3">视频监控</a></li>
+		    <li><a href="#tabs-4">智能分析与检索</a></li>
+		    <li><a href="#tabs-5">数据管理</a></li>
+		    <li><a href="#tabs-6">存储管理</a></li>
+		    <li><a href="#tabs-7">配置管理中心</a></li>
+		    <li><a href="#tabs-8">任务计划管理</a></li>
+		    <li><a href="#tabs-9">应急管理</a></li>
+		    <li><a href="#tabs-10">预警布控</a></li>
+		    <li><a href="#tabs-11">用户管理</a></li>
+		    <li><a href="#tabs-12">通用工具</a></li>
+		  </ul>
+		  <div id="tabs-1">
+		    <h2>内容标题 1</h2>
+		    <p>2222</p>
+		  </div>
+		  <div id="tabs-2">
+		  	<div class="monitor">
+		  			<center style="margin-left: -100px;"><label class="classify">分类显示</label><label>使用频率</label></center>
+			    	<h1>视频监控 <a href="javascript:void(0);" onclick="more()" id="more">更多></a></h1>
+			    	
+			    	<a href="javascript:void(0)" id="0201" onclick="openTab(this.id,'monitor.html','实时查看');">
+		    			<img src="images/monitor_02.jpg" width="200" height="100"/><br />
+		    			<span>实时查看</span>
+			    	</a>
+			    	
+			    	<a href="javascript:void(0)" id="0202"  onclick="openTab(this.id,'./main/videohandler/historyvideo.html','历史录像调用');">
+			    		<img src="images/monitor_03.jpg" width="200" height="100"/><br />
+			    		<span>历史录像调用</span>
+			    	</a>
+			    	
+			    	<a href="javascript:void(0)" id="0203"  onclick="openTab(this.id,'./main/videohandler/elecmap.html','电子地图联动');">
+			    		<img src="images/monitor_03.jpg" width="200" height="100"/><br />
+			    		<span>电子地图联动</span>
+			    	</a>
+			    	
+			    	<a href="javascript:void(0)" id="0204"  onclick="openTab(this.id,'./main/videohandler/videowall.html','视频上墙');">
+			    		<img src="images/monitor_03.jpg" width="200" height="100"/><br />
+			    		<span>视频上墙</span>
+			    	</a>
+			    	<div class="clear"></div>
+		  		</div>
+		  </div>
+		   <div id="tabs-3">
+		  	<div class="monitor">
+			    	<h1>视频监控 </h1>
+			    	<a href="javascript:void(0)" id="0201" onclick="openTab(this.id,'monitor.html','实时查看');">
+		    			<img src="images/monitor_02.jpg" width="200" height="100"/><br />
+		    			<span>实时查看</span>
+			    	</a>
+			    	
+			    	<a href="javascript:void(0)" id="0202"  onclick="openTab(this.id,'./main/videohandler/historyvideo.html','历史录像调用');">
+			    		<img src="images/monitor_03.jpg" width="200" height="100"/><br />
+			    		<span>历史录像调用</span>
+			    	</a>
+			    	
+			    	<a href="javascript:void(0)" id="0203"  onclick="openTab(this.id,'./main/videohandler/elecmap.html','电子地图联动');">
+			    		<img src="images/monitor_03.jpg" width="200" height="100"/><br />
+			    		<span>电子地图联动</span>
+			    	</a>
+			    	
+			    	<a href="javascript:void(0)" id="0204"  onclick="openTab(this.id,'./main/videohandler/videowall.html','视频上墙');">
+			    		<img src="images/monitor_03.jpg" width="200" height="100"/><br />
+			    		<span>视频上墙</span>
+			    	</a>
+			    	<div class="clear"></div>
+		  		</div>
+		  </div>
+		  <div id="tabs-4">
+		  		<div class="contrast">
+			    	<h1>智能分析与检索</h1>
+			    	<a href="javascript:void(0)" id="0301" onclick="openTab(this.id,'./main/constrast/figure.html','智能搜图');">
+		    			<img src="images/monitor_02.jpg" width="200" height="100"/><br />
+		    			<span>智能搜图</span>
+			    	</a>
+			    	
+			    	<a href="javascript:void(0)" id="0302"  onclick="openTab(this.id,'./main/constrast/face.html','人脸识别对比');">
+			    		<img src="images/monitor_03.jpg" width="200" height="100"/><br />
+			    		<span>人脸识别对比</span>
+			    	</a>
+			    	
+			    	<a href="javascript:void(0)" id="0303"  onclick="openTab(this.id,'./main/constrast/videbehavior.html','视频行为分析');">
+			    		<img src="images/monitor_03.jpg" width="200" height="100"/><br />
+			    		<span>视频行为分析</span>
+			    	</a>
+			    	
+			    	<a href="javascript:void(0)" id="0304"  onclick="openTab(this.id,'./main/constrast/virtbayonet.html','虚拟卡口');">
+			    		<img src="images/monitor_03.jpg" width="200" height="100"/><br />
+			    		<span>虚拟卡口</span>
+			    	</a>
+			    	<div class="clear"></div>
+		  		</div>
+		  </div>
+		  <div id="tabs-5">
+		  		<div class="data_manager">
+			    	<h1>数据管理</h1>
+			    	<a href="javascript:void(0)" id="0401" onclick="openTab(this.id,'./main/datamanager/credential.html','现场执法证件管理');">
+		    			<img src="images/monitor_02.jpg" width="200" height="100"/><br />
+		    			<span>现场执法证件管理</span>
+			    	</a>
+			    	
+			    	<a href="javascript:void(0)" id="0402"  onclick="openTab(this.id,'./main/datamanager/logger.html','日志管理');">
+			    		<img src="images/monitor_03.jpg" width="200" height="100"/><br />
+			    		<span>日志管理</span>
+			    	</a>
+			    	<div class="clear"></div>
+		  		</div>
+		  </div>
+		  <div id="tabs-6">
+		  		<div class="memory_manager">
+			    	<h1>存储管理</h1>
+			    	<a href="javascript:void(0)" id="0501" onclick="openTab(this.id,'./main/memorymanager/memoryplan.html','存储计划管理');">
+		    			<img src="images/monitor_02.jpg" width="200" height="100"/><br />
+		    			<span>存储计划管理</span>
+			    	</a>
+			    	
+			    	<a href="javascript:void(0)" id="0502"  onclick="openTab(this.id,'./main/memorymanager/videoimport.html','视频导入管理');">
+			    		<img src="images/monitor_03.jpg" width="200" height="100"/><br />
+			    		<span>视频导入管理</span>
+			    	</a>
+			    	<div class="clear"></div>
+		  		</div>
+		  </div>
+		  <div id="tabs-7">
+		  		<div class="configure_manager">
+			    	<h1>配置管理中心</h1>
+			    	<a href="javascript:void(0)" id="0601" onclick="openTab(this.id,'./main/configmanager/headevice.html','前端设备管理');">
+		    			<img src="images/monitor_02.jpg" width="200" height="100"/><br />
+		    			<span>前端设备管理</span>
+			    	</a>
+			    	
+			    	<a href="javascript:void(0)" id="0602"  onclick="openTab(this.id,'./main/configmanager/crate.html','交换机机箱管理');">
+			    		<img src="images/monitor_03.jpg" width="200" height="100"/><br />
+			    		<span>交换机机箱管理</span>
+			    	</a>
+			    	
+			    	<a href="javascript:void(0)" id="0603"  onclick="openTab(this.id,'./main/configmanager/server.html','服务器管理');">
+			    		<img src="images/monitor_03.jpg" width="200" height="100"/><br />
+			    		<span>服务器管理</span>
+			    	</a>
+			    	
+			    	<a href="javascript:void(0)" id="0604"  onclick="openTab(this.id,'./main/configmanager/supplyelect.html','供电管理');">
+			    		<img src="images/monitor_03.jpg" width="200" height="100"/><br />
+			    		<span>供电管理</span>
+			    	</a>
+			    	<div class="clear"></div>
+		  		</div>
+		  </div>
+		  <div id="tabs-8">
+		  		
+		  </div>
+		  <div id="tabs-9">
+		  		
+		  </div>
+		  <div id="tabs-10">
+		  		
+		  </div>
+		  <div id="tabs-11">
+		  		
+		  </div>
+		  <div id="tabs-12">
+		  		
+		  </div>
+		  <div id="tabs-13">
+		  		
+		  </div>
+		</div>
+	</body>
+</html>

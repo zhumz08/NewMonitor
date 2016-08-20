@@ -1,0 +1,738 @@
+@charset "utf-8";
+/* CSS Document */
+/*--------------------------整体布局-----------------------------*/
+html, body {
+	height:100%;
+}
+html {
+	background-color:#fff;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	padding:60px 0 69px 0;
+	overflow:hidden;
+}
+body {
+	color:#333;
+	font:12px/1.5 verdana;
+}
+li {
+	list-style:none;
+	list-style-type:none;
+}
+#top, #info-bar, #content {
+	position:relative;
+}
+#top, #info-bar {
+	z-index:2;
+	background-color:#fff;
+}
+#top {
+	background:url(../images/top-bg.jpg) repeat-x;
+	height:60px;
+	margin-top:-60px;
+}
+#info-bar {
+	height:69px;
+}
+#content {
+	z-index:1;
+	height:100%;
+	padding-left:300px;
+	/*background-color:#CEEDFC;*/
+}
+#content #content-left, #content #content-right {
+	display:inline;
+	float:left;
+	height:100%;
+}
+#content #content-left {
+	width:300px;
+	margin-left:-300px;
+}
+#content #content-right {
+	width:100%;
+}
+/*-------------------------head-----------------------------------*/
+
+.icons-head-bg {
+	background:url(../images/icons-head.png) no-repeat;
+}
+#MD-logo {
+	float:left;
+	width:210px;
+	height:100%;
+	background:url(../images/MD_logo.jpg) no-repeat;
+}
+#nav {
+	float:right;
+	height:60px;
+	position:relative;
+	width:350px;
+}
+#window-action {
+	position:absolute;
+	right:20px;
+	top:10px;
+}
+#window-action ul li {
+	float:left;
+	margin-right:10px;
+}
+.sp {
+	display:block;
+	height:8px;
+	width:9px;
+}
+.min {
+	background-position: 0px -100px;
+}
+.max {
+	background-position: -50px -100px;
+}
+.close {
+	background-position:-100px -100px;
+}
+/*-------------------------------------------------导航菜单样式---------------------------------------------*/
+#nav-menu {
+	float:left;
+	margin-top:11px;
+	overflow:hidden;
+}
+#nav-menu ul li {
+	display:block;
+	float:left;
+	margin-right:35px;
+}
+#nav-menu li a {
+	background:url(../images/icons-head.png) no-repeat;
+	display:block;
+	float:left;
+	height: 40px;
+	position:relative;
+	margin:0 auto;
+	width: 35px;
+}
+#nav-menu li a span {
+	display:block;
+	position:absolute;
+	text-align:center;
+	top:25px;
+}
+#nav-menu ul li #dl {
+	background-position: 0px 0px;
+}
+#nav-menu ul li #zb {
+	background-position: -50px 0px;
+}
+#nav-menu ul li #db {
+	background-position: -100px 0px;
+}
+#nav-menu ul li #wjbf {
+	background-position: -150px 0px;
+}
+#nav-menu ul li #jsq {
+	background-position: -200px 0px;
+}
+#nav-menu ul li #sz {
+	background-position: -250px 0px;
+}
+#nav-menu ul li #bz {
+	background-position: -300px 0px;
+}
+/*鼠标滑过以及选中状态*/
+#nav-menu #nav-menu-list li a.active_1 {
+	background-position: 0px -50px;
+}
+#nav-menu #nav-menu-list li a.active_2 {
+	background-position: -50px -50px;
+}
+#nav-menu #nav-menu-list li a.active_3 {
+	background-position: -100px -50px;
+}
+#nav-menu #nav-menu-list li a.active_4 {
+	background-position: -250px -50px;
+}
+#nav-menu #nav-menu-list li a.active_5 {
+	background-position: -300px -50px;
+}
+/*#nav-menu #nav-menu-list li a.active_6{
+	background-position: -250px -50px;	
+}
+#nav-menu #nav-menu-list li a.active_7{
+	background-position: -300px -50px;	
+}*/
+/*---------------------------欢迎条-----------------------------*/
+.menu_bg {
+	position:absolute;
+	left:240px;
+	top:20px;
+}
+.loginName {
+	color:#076BB4;
+	font-weight:bold;
+}
+/*------------------------content----------------------------------------*/
+/*#main {
+	background:#fff;
+}
+#content{
+	height:100%;
+	padding-right:0px 1px;
+	position:relative;
+}*/
+/*----------------------------左侧-------------------------------------*/
+.icons-left-bg {
+	background:url(../images/icons-left.png) no-repeat;
+}
+/*----------------------------content部分--------------------------------*/
+/*----------------导航栏----------------*/
+.dh-bar {
+	color:#fff;
+	height:22px;
+	background:#70777d;
+	/*	border-top:1px solid #93989e;
+	border-bottom:1px solid #93989e;*/
+	line-height:12px;
+	margin-bottom:2px;
+	width:98%;
+}
+.dh-bar span {
+	color:#fff;
+	display:inline-block;
+	padding-left:20px;
+	margin-left:10px;
+	margin-top:5px;
+}
+#content-right .turn {
+/*background:#000;*/	
+}
+/*tab页部分*/
+#turnE {
+	margin-bottom:3px;
+}
+.menuA {
+	height:23px;
+	width:100%;
+	overflow:hidden;
+}
+.menuA ul {
+	float:left;
+}
+.menuA li {
+	cursor:pointer;
+	float:left;
+	height:22px;
+	padding:0px 8px 0;
+	background:#e3e3e3;
+	border-left:1px #FFF solid;
+	line-height:22px;
+	color:#70777d;
+}
+.menuA .libg {
+	background:#ccd632;
+	color:#fff;
+}
+.menuA_content {
+	border:0px solid #e2e2e2;/*	height:250px;*/
+}
+.show_h {
+	width:100%;
+	height:100%;
+	margin:0px 1px 1px 0px;
+}
+/*搜索框部分*/
+#search-bar {
+	height:20px;
+	background:#e2e2e2;
+}
+.text {
+	background:#f4f4f4;
+	border:1px solid #c2c2c2;
+	height:24px;
+	line-height:24px;
+	padding-left:5px;
+}
+.text1 {
+	float:left;
+	height:16px;
+	width:65px;
+}
+#search-left {
+	float:left;
+	margin-left:5px;
+}
+#search-right {
+	float:right;
+}
+#search-left li, #search-right li {
+	display:block;
+	float:left;
+	margin-right:5px;
+	line-height:18px;
+}
+#search-left ul li span {
+	cursor:pointer;
+}
+.icon {
+	height:14px;
+	display:block;
+	width:14px;
+	margin-top:1px;
+}
+.icon-search {
+	background-position: -50px 2px;
+}
+.icon-up {
+	background-position: -100px 2px;
+}
+.icon-down {
+	background-position: -150px 2px;
+}
+.icon-edit {
+	background-position: -200px 2px;
+}
+.operate {
+	clear:both;
+	height:265px;
+	padding-top:5px;
+}
+.operate .menuA_content {
+	background:#e2e2e2;
+}
+#PZT-first {
+	background:url(../images/PZT-bg.png) no-repeat;
+	height:160px;
+	margin:0 auto;
+	width:285px;
+	position:relative;
+}
+.icon-pa {
+	position:absolute;
+	cursor:pointer;
+}
+.icon-up2 {
+	background-position: -250px -50px;
+	left:140px;
+	top:15px;
+}
+.icon-down2 {
+	background-position: -350px -50px;
+	bottom:10px;
+	left:140px;
+}
+.icon-left {
+	background-position: -300px -50px;
+	left:20px;
+	top:75px;
+}
+.icon-right {
+	background-position: -400px -50px;
+	right:10px;
+	top:75px;
+}
+/*-------------------------------------------------pzt按钮部分-----------------------------------------------------*/
+#PZT-button {
+	height: 65px;
+	left: 61px;
+	position: absolute;
+	top: 45px;
+	width: 160px;
+}
+#PZT-button ul li {
+	display:block;
+	float:left;
+	margin-left:7px;
+	margin-top:7px;
+}
+.PZT-bt {
+	display:block;
+	height:25px;
+	width:25px;
+}
+#fd {
+	background-position:0px -100px;
+}
+#jjy {
+	background-position:-50px -100px;
+}
+#gqd {
+	background-position:-100px -100px;
+}
+#ys {
+	background-position:-150px -100px;
+}
+#syzw {
+	background-position:-200px -100px;
+}
+#sx {
+	background-position:0px -200px;
+}
+#jjj {
+	background-position:-50px -200px;
+}
+#gqx {
+	background-position:-100px -200px;
+}
+#dkg {
+	background-position:-150px -200px;
+}
+#tyzw {
+	background-position:-200px -200px;
+}
+/*------------------------数字盘----------------------------------------*/
+#figure {
+	width:100%;
+	margin:0 auto;
+	margin-top:5px;
+	overflow:hidden;
+}
+#figure_panel {
+	width:180px;
+	float:left;
+	margin-left:10px;
+	display:block;
+}
+.figure_a {
+	border:1px solid #70787d;
+	color:#70787d;
+	display:block;
+	font-size:12px;
+	float:left;
+	height:22px;
+	line-height:22px;
+	margin:0px 5px 5px 0px;
+	text-align:center;
+	width:22px;
+}
+.figure_a:hover {
+	background:#bcc530;
+	color:#fff;
+}
+#figure_control {
+	float:right;
+	margin-top:8px;
+	margin-right:15px;
+	overflow:hidden;
+}
+/*---------------------------------数字键右侧调节区域--------------------------------*/
+.div_turning {
+	clear:both;
+	padding-top:10px;
+	margin-left:20px;
+}
+.turning {
+	display:block;
+	float:left;
+	height:18px;
+	width:18px;
+	margin-right:10px;
+}
+/*go按钮样式*/
+.sub_bt {
+	background: none repeat scroll 0 0 #E3E3E3;
+	border: 1px solid #70787D;
+	display: block;
+	float: left;
+	height: 12px;
+	line-height: 9px;
+	margin-left: 3px;
+	padding: 2px;
+}
+.pre {
+	background-position:-300px -100px;
+}
+.next {
+	background-position:-350px -100px;
+}
+.pre:hover {
+	background-position:-300px -150px;
+}
+.next:hover {
+	background-position:-350px -150px;
+}
+/*-------------------------------------右侧播放按钮部分--------------------------------*/
+.icons-right-bg {
+	background:url(../images/icons-right.png);
+}
+#content-right .turn {
+	position:relative;
+}
+#play-about {
+	background: none repeat scroll 0 0 #E2E2E2;
+	bottom: 0;
+	clear: both;
+	height: 30px;
+	line-height:30px;
+	position:absolute;
+	width: 100%;
+}
+.play {
+	display:block;
+	float:left;
+	height:24px;
+	margin-left:10px;
+	margin-top:3px;
+	width:24px;
+}
+.play-1 {
+	background-position:0px -100px;
+}
+.play-2 {
+	background-position:-50px -100px;
+}
+.play-3 {
+	background-position:-100px -100px;
+}
+.play-4 {
+	background-position:-150px -100px;
+}
+.play-5 {
+	background-position:-200px -100px;
+}
+.play-6 {
+	background-position:-250px -100px;
+}
+.play-7 {
+	background-position:0px -200px;
+}
+.play-8 {
+	background-position:-50px -200px;
+}
+.play-9 {
+	background-position:-100px -200px;
+}
+.play-10 {
+	background-position:-150px -200px;
+}
+.play-11 {
+	background-position:-200px -200px;
+}
+.play-12 {
+	background-position:-250px -200px;
+}
+.play-13 {
+	background-position:0px -300px;
+}
+.play-14 {
+	background-position:-50px -300px;
+}
+.play-15 {
+	background-position:-100px -300px;
+}
+.play-16 {
+	background-position:-150px -300px;
+}
+.play-17 {
+	background-position:-200px -300px;
+}
+.play-18 {
+	background-position:-250px -300px;
+}
+/*鼠标经过，点击按下效果*/
+.play-1:hover ,.current-1{
+	background-position:0px -150px;
+}
+.play-2:hover,.current-2 {
+	background-position:-50px -150px;
+}
+.play-3:hover,.current-3 {
+	background-position:-100px -150px;
+}
+.play-4:hover,.current-4 {
+	background-position:-150px -150px;
+}
+.play-5:hover,.current-5 {
+	background-position:-200px -150px;
+}
+.play-6:hover ,.current-6{
+	background-position:-250px -150px;
+}
+.play-7:hover,.current-7 {
+	background-position:0px -250px;
+}
+.play-8:hover ,.current-8{
+	background-position:-50px -250px;
+}
+.play-9:hover ,.current-9{
+	background-position:-100px -250px;
+}
+.play-10:hover,.current-10 {
+	background-position:-150px -250px;
+}
+.play-11:hover,.current-11 {
+	background-position:-200px -250px;
+}
+.play-12:hover,.current-12 {
+	background-position:-250px -250px;
+}
+.play-13:hover,.current-13{
+	background-position:0px -350px;
+}
+.play-14:hover,.current-14 {
+	background-position:-50px -350px;
+}
+.play-15:hover ,.current-15{
+	background-position:-100px -350px;
+}
+.play-16:hover ,.current-16{
+	background-position:-150px -350px;
+}
+.play-17:hover,.current-17 {
+	background-position:-200px -350px;
+}
+.play-18:hover ,.current-18{
+	background-position:-250px -350px;
+}
+/*信息栏*/
+/*#info-bar {
+	clear:both;
+	height:69px;
+}*/
+#info-bar .dh-bar {
+	line-height:24px;
+	margin-bottom:0px;
+	padding-left:10px;
+	position:relative;
+}
+/*-------折叠小图标的样式-----*/
+.info-bt {
+	cursor:pointer;
+	height:30px;
+	line-height:15px;
+	position:absolute;
+	right:20px;
+	top:-1px;
+	width:60px;
+}
+/*.dh-bar span.info-bt{
+	cursor:pointer;
+	height:15px;
+	margin:0px;
+	position:absolute;
+	right:20px;
+	top:4px;
+	width:15px;
+	background-position:-300px -250px;	
+}*/
+
+/*.dh-bar span.info-bt a {
+	display:block;
+	width:40px;
+	margin:0 auto;
+	line-height:24px;
+	border:1px solid #AAA;
+}*/
+.info-bt a span {
+	background-position:-300px -250px;
+}
+.info_main {
+	/*background:url(../images/info_main_bg.jpg) repeat-x;*/
+	background:#f0f0f0;
+	height:115px;
+	width:100%;
+	overflow:auto;
+	overflow-x:hidden
+}
+.li_log {
+	border-bottom:1px solid #d1d1d1;
+	display:block;
+	height:14px;
+	line-height:14px;
+	padding-left:5px;
+	width:100%;
+}
+.red {
+	color:#ff0000;
+}
+.orange {
+	color:#ffa800;
+}
+.info_text {
+	background:none;
+	font-size:12px;
+	height:100%;
+	line-height:21px;
+	overflow:hidden;
+	width:100%;
+}
+/* 登陆框*/
+/*.text{
+	border: 1px solid #C5DCEE;
+    border-radius: 5px 5px 5px 5px;
+    color: #797979;
+    height: 28px;
+    line-height: 19px;
+    padding: 3px 4px;
+}*/
+.default_text {
+	width:160px;
+}
+.short_text {
+	width:100px;
+}
+/*--------------------登录对话的样式调整----------------------------------------*/
+#loginForm {
+	padding:0 10px 20px 20px;
+}
+.div_error {
+	height:22px;
+}
+.error {
+	background:url(../images/icons-head.png) 0px -100px no-repeat;
+	display:block;
+	font-weight:bold;
+	height:25px;
+	color:red;
+	padding-left:15px;/*	text-align: center;*/
+}
+#loginForm label {
+	color:#000;
+	display:inline-block;
+	font-size:12px;
+	height:35px;
+	/*width:60px;*/
+	line-height:30px;
+}
+#loginForm p {
+	height:35px;
+}
+.p_bt {
+	margin-top:8px;
+	padding-left:20px;
+}
+.sb_bt {
+	height:35px;
+	margin-top:5px;
+	background: none repeat scroll 0 0 #157fe9;
+	border: 1px solid #236AA3;
+	border-radius: 3px 3px 3px 3px;
+	color: #FFFFFF;
+	cursor: pointer;
+	font-size: 13px;
+	font-size: 13px!important;
+	font-weight:bold;
+	/*font-weight: bold;*/
+	line-height:35px;
+	overflow: visible;
+	width:80px;/*    text-shadow: 1px 1px #95caff;*/
+}
+/*-----------------设置窗口样式----------------*/
+#configdiv form {
+	padding-left:10px;
+}
+#folderChoose {
+	height:26px;
+	line-height:26px;
+	text-align:center;
+	width:60px;
+	background:#e3eff8;
+	border:1px solid #afbfcf;
+}
+/*插件对话框调整*/
+.ui-dialog .ui-dialog-content {
+	background:#e9ebee;
+}
+.ui-dialog .ui-dialog-content {
+	padding: 0.5em 1em;
+}

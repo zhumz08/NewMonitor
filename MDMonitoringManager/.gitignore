@@ -1,0 +1,13 @@
+*.class
+
+# Package Files #
+*.war
+*.ear
+/.classpath
+/.project
+/.mymetadata
+/.mystrutsdata
+classes
+.svn
+.settings
+.myeclipse
